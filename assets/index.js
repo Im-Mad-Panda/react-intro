@@ -3,34 +3,37 @@
 // React
 // ReactDOM
 
+class Counter extends React.Component{
 
+constructor(props){
+super(props);
+this.state = {
+  counter: 0
+}
+}
 
-class Heading extends React.Component{
+increment(){
+alert('+')
+}
+
+decrement(){
+  alert('+')
+}
 
   render(){
-    console.log(this.props);
-    const {titleForHeading, classForHeading, children} = this.props;
-    
-    return React.createElement('h1', {
-      title: titleForHeading,
-      className: classForHeading
-    },
-      ...children);
+    const {counter} = this.state;
+    return React.createElement(React.Fragment, null,
+        React.createElement('h1', null, counter),
+        React.createElement('button',{
+          onClick: this.increment}, '+'),
+        React.createElement('button',{
+          onClick: this.decrement}, '-'),
+    );
   }
 }
 
-const reactElement = React.createElement(Heading, {
-  titleForHeading: 'hi',
-  classForHeading: 'heading'
-},'atr1');
+const reactCounterElement = React.createElement(Counter, {});
 
-const reactElement2 = React.createElement(Heading, {
-
-  classForHeading: 'new-heading'
-}, 'New Heading');
-
-const reactWrapperElement = React.createElement('div', null, reactElement, reactElement2);
+ReactDOM.render(reactCounterElement, document.getElementById('root'));
 
 
-
-ReactDOM.render(reactWrapperElement, document.getElementById("root"));
